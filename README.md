@@ -1,14 +1,20 @@
-Fly-More
-======
+# 安装须知
 
-无限 飞行体力
+由于 CaaliTeraProxy 缺少部分[def]数据协议文件, 以及 对应服务器版本的[map]映射码
+
+- 用记事本打开 map\protocol.345890.map 并将内容 复制/追加 到
+
+    \tera-proxy\node_modules\tera-data\map\protocol.345890.map 中保存
+
+- 复制文件夹 protocol 中的 [defs] 全部覆盖到
+
+    \tera-proxy\node_modules\tera-data\protocol 中
 
 ------
 
-- 编辑: tera-proxy\node_modules\tera-data\map\
+Fly-More 真·无限飞行体力
+======
 
-  protocol.344304.map
+# 功能简介
 
-  台服(TW)请自行追加 S_CANT_FLY_ANYMORE.def 映射码:
-
-  S_CANT_FLY_ANYMORE = 39814
+任意飞行坐骑 体力无限
