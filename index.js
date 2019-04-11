@@ -13,7 +13,6 @@ module.exports = function FlyMore(mod) {
 		serverMounted = false,
 		remountTimer = null
 	
-	mod.hook('S_LOGIN', 12, sLogin)
 	mod.hook('S_CANT_FLY_ANYMORE', 1, sCantFlyAnymore)
 	mod.hook('S_PLAYER_CHANGE_FLIGHT_ENERGY', 1, sPlayerChangeFlightEnergy)
 	mod.hook('C_PLAYER_LOCATION', 5, cPlayerLocation)
@@ -23,10 +22,6 @@ module.exports = function FlyMore(mod) {
 	mod.hook('C_START_SKILL', 7, cStartSkill)
 	mod.hook('S_MOUNT_VEHICLE', 2, {order: 10}, sMountVehicle)
 	mod.hook('S_UNMOUNT_VEHICLE', 2, {order: 10}, sUnmountVehicle)
-	
-	function sLogin(event) {
-		gameId = event.gameId
-	}
 	
 	function sCantFlyAnymore(event) {
 		return false
@@ -55,7 +50,7 @@ module.exports = function FlyMore(mod) {
 	}
 	
 	function sUserStatus(event) {
-		if(event.gameId == gameId) {
+		if(event.gameId == mod.game.me.gameId) {
 			inCombat = event.status == 1
 		}
 	}
@@ -68,7 +63,7 @@ module.exports = function FlyMore(mod) {
 	}
 	
 	function sMountVehicle(event) {
-		if (event.gameId == gameId) {
+		if (event.gameId == mod.game.me.gameId) {
 			const fakeMounted = mountSkill !== -1
 			serverMounted = true
 			mountSkill = event.skill
@@ -79,7 +74,7 @@ module.exports = function FlyMore(mod) {
 	}
 	
 	function sUnmountVehicle(event) {
-		if (event.gameId != gameId) {
+		if (event.gameId != mod.game.me.gameId) {
 			return
 		}
 		serverMounted = false
