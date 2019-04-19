@@ -1,8 +1,8 @@
 module.exports = function FlyMore(mod) {
-	
+
 	const CATEGORY_GLOBAL = 9999
 	const SKILL_FLYING_DISMOUNT = 65000001
-	
+
 	let gameId = -1n,
 		location = null,
 		outOfEnergy = false,
@@ -12,7 +12,7 @@ module.exports = function FlyMore(mod) {
 		mountSkill = -1,
 		serverMounted = false,
 		remountTimer = null
-	
+
 	mod.hook('S_CANT_FLY_ANYMORE', 1, sCantFlyAnymore)
 	mod.hook('S_PLAYER_CHANGE_FLIGHT_ENERGY', 1, sPlayerChangeFlightEnergy)
 	mod.hook('C_PLAYER_LOCATION', 5, cPlayerLocation)
@@ -22,19 +22,19 @@ module.exports = function FlyMore(mod) {
 	mod.hook('C_START_SKILL', 7, cStartSkill)
 	mod.hook('S_MOUNT_VEHICLE', 2, {order: 10}, sMountVehicle)
 	mod.hook('S_UNMOUNT_VEHICLE', 2, {order: 10}, sUnmountVehicle)
-	
+
 	function sCantFlyAnymore(event) {
 		return false
 	}
-	
+
 	function sPlayerChangeFlightEnergy(event) {
 		outOfEnergy = event.energy === 0
 	}
-	
+
 	function cPlayerLocation(event) {
 		location = {flying: false, pos: event.loc, dir: event.w}
 	}
-	
+
 	function cPlayerFlyingLocation(event) {
 		location = {flying: true, pos: event.loc, dir: event.w}
 		if (outOfEnergy && event.type !== 7 && event.type !== 8) {
@@ -42,26 +42,26 @@ module.exports = function FlyMore(mod) {
 			return true
 		}
 	}
-	
+
 	function sSkillCategory(event) {
 		if (event.category == CATEGORY_GLOBAL) {
 			mountDisabled = !event.enabled
 		}
 	}
-	
+
 	function sUserStatus(event) {
 		if(event.gameId == mod.game.me.gameId) {
 			inCombat = event.status == 1
 		}
 	}
-	
+
 	function cStartSkill(event) {
 		if (event.skill.id == mountSkill || event.skill.id == SKILL_FLYING_DISMOUNT) {
 			dismountByUser = true
 			mountSkill = -1
 		}
 	}
-	
+
 	function sMountVehicle(event) {
 		if (event.gameId == mod.game.me.gameId) {
 			const fakeMounted = mountSkill !== -1
@@ -72,7 +72,7 @@ module.exports = function FlyMore(mod) {
 			}
 		}
 	}
-	
+
 	function sUnmountVehicle(event) {
 		if (event.gameId != mod.game.me.gameId) {
 			return
@@ -87,7 +87,7 @@ module.exports = function FlyMore(mod) {
 			return false
 		}
 	}
-	
+
 	function tryRemount() {
 		if (!mountDisabled && !inCombat) {
 			mod.send('C_START_SKILL', 7, {
@@ -107,5 +107,5 @@ module.exports = function FlyMore(mod) {
 			mountSkill = -1
 		}
 	}
-	
+
 }
