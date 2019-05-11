@@ -1,8 +1,7 @@
 {
     "files": {
-        "README.md": "92d78a49779d5a352ec09318dee48929b88273ce47564766db6fc44f523a745d",
-        "index.js": "bdcfa7b369edc5708442cda8ed77bb841be61563e8208f51bff22b8d1917de46",
-        "module.json": "61cebf5fee53244c32c0dec09e485a90c2b80cef7bbd2a88f59bd247dcec665b"
+        "index.js": "9c673b8a50f619dbaf7c4db7d647bb41a69d9ee5660bc646aa5eed32e20ef7f6",
+        "module.json": "20fca06c90dc3fce1cc989db46d90134f9861d6d38b0863b68081460102227d1"
     },
     "defs": {
         "C_PLAYER_FLYING_LOCATION": 4,
