@@ -1,13 +1,12 @@
 {
-    "disableAutoUpdate": false,
     "name": "Fly-More",
     "options": {
         "niceName": "无限飞行",
-        "guiName": "无限飞行"
+        "guiName": "无限飞行(Fly-More)"
     },
-    "author": "ZC",
+    "author": "ZC / pinkipi",
     "description": "任意飞行坐骑 体力无限",
     "servers": ["https://raw.githubusercontent.com/tera-mod/Fly-More/master/"],
     "supportUrl": "https://github.com/tera-mod/Fly-More/issues",
-    "version": "81.03"
+    "version": "85.06"
 }
