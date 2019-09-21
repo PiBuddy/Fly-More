@@ -1,7 +1,7 @@
 {
     "files": {
-        "index.js": "9c673b8a50f619dbaf7c4db7d647bb41a69d9ee5660bc646aa5eed32e20ef7f6",
-        "module.json": "2935039e0d5b538c98c37326032aae9415a0fd6f01f9824a1a944f9b2110f241"
+        "index.js": "38fb355b411920c63d815f6b00ee7b986d7e1ef0424334e5a49f16617796ff2f",
+        "module.json": "73a43bda0f01fc1057de1c5de6ff01333a128dbb6cac95870f5828017e6ef2fa"
     },
     "defs": {
         "C_PLAYER_FLYING_LOCATION": 4,
